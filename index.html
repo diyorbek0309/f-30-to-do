@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="container">
+      <h1>To Do List</h1>
+      <div id="inputWrap">
+        <input
+          type="text"
+          name="title"
+          id="titleInput"
+          placeholder="Enter ToDo title"
+        />
+        <button id="addTitle" onclick="addTodo()">ADD</button>
+      </div>
+      <ul id="todosWrap"></ul>
+    </div>
+
     <script src="main.js"></script>
   </body>
 </html>
