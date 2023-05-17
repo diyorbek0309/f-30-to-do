@@ -5,10 +5,11 @@ const editModal = document.getElementById("editModal");
 const editInput = document.getElementById("editInput");
 const editOK = document.getElementById("editOK");
 const editCancel = document.getElementById("editCancel");
-let todos = [];
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 const showTodo = () => {
   todosWrap.innerHTML = null;
+  localStorage.setItem("todos", JSON.stringify(todos));
 
   todos.forEach((todo) => {
     const li = document.createElement("li");
@@ -22,7 +23,11 @@ const showTodo = () => {
 
     todosWrap.appendChild(li);
   });
+
+  titleInput.value = "";
 };
+
+showTodo();
 
 const addTodo = () => {
   const todoItem = {
@@ -32,8 +37,6 @@ const addTodo = () => {
   };
   todos.push(todoItem);
   showTodo();
-
-  titleInput.value = "";
 };
 
 const completeTodo = (id) => {
