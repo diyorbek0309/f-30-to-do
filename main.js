@@ -14,7 +14,9 @@ const showTodo = () => {
     const li = document.createElement("li");
     li.innerHTML = `<strong>${
       todo.isCompleted ? "<del>" + todo.title + "</del>" : todo.title
-    }</strong><span><button>E</button><button onclick='completeTodo(${
+    }</strong><span><button onclick='editTodo(${
+      todo.id
+    })'>E</button><button onclick='completeTodo(${
       todo.id
     })'>C</button><button onclick='deleteTodo(${todo.id})'>D</button></span>`;
 
@@ -44,4 +46,17 @@ const deleteTodo = (id) => {
   showTodo();
 };
 
-const editTodo = (id) => {};
+const editTodo = (id) => {
+  editModal.style.display = "block";
+  editInput.value = todos[id].title;
+
+  editOK.addEventListener("click", () => {
+    todos[id].title = editInput.value;
+    editModal.style.display = "none";
+    showTodo();
+  });
+
+  editCancel.addEventListener("click", () => {
+    editModal.style.display = "none";
+  });
+};
