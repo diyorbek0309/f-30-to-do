@@ -30,12 +30,15 @@ const showTodo = () => {
 showTodo();
 
 const addTodo = () => {
-  const todoItem = {
-    id: todos.length,
-    title: titleInput.value,
-    isCompleted: false,
-  };
-  todos.push(todoItem);
+  if (titleInput.value.trim().length > 0) {
+    const todoItem = {
+      id: todos.length,
+      title: titleInput.value,
+      isCompleted: false,
+      isDeleted: false
+    };
+    todos.push(todoItem);
+  }
   showTodo();
 };
 
